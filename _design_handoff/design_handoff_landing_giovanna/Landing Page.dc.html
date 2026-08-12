@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Karla:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  body { margin:0; background:#FBF8F5; }
+  a { color:#8FA8B8; text-decoration:none; }
+  a:hover { color:#E2A9A0; }
+</style>
+</helmet>
+
+<div style="font-family:Karla,sans-serif;color:#2E2A28;background:#FBF8F5;min-height:100vh">
+
+  <header style="display:flex;align-items:center;justify-content:space-between;gap:24px;padding:26px 56px;position:sticky;top:0;background:rgba(251,248,245,0.88);backdrop-filter:blur(8px);z-index:20;border-bottom:1px solid #EDE4DC">
+    <span style="font-family:'Playfair Display',serif;font-size:22px;letter-spacing:0.02em">Giovanna Cabral</span>
+    <nav style="display:flex;gap:34px;font-size:14px;letter-spacing:0.06em;text-transform:uppercase;color:#8A807A">
+      <a href="#livros" style="color:#8A807A">Livros</a>
+      <a href="#podcast" style="color:#8A807A">Podcast</a>
+      <a href="#conteudos" style="color:#8A807A">Conteúdos</a>
+      <a href="#indicacoes" style="color:#8A807A">Indicações</a>
+      <a href="#instagram" style="color:#8A807A">Instagram</a>
+    </nav>
+    <a href="#newsletter" style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;padding:11px 22px;border-radius:999px;background:#E2A9A0;color:#FFFDFB">Newsletter</a>
+  </header>
+
+  <section style="display:grid;grid-template-columns:1.15fr 0.85fr;gap:64px;align-items:center;padding:96px 56px 104px;max-width:1280px;margin:0 auto">
+    <div style="display:flex;flex-direction:column;gap:28px">
+      <span style="font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:#B49B90">Leituras, conversas e boas escolhas</span>
+      <h1 style="font-family:'Playfair Display',serif;font-weight:400;font-size:66px;line-height:1.08;margin:0;text-wrap:pretty">Um cantinho para quem<br><em style="color:#8FA8B8">ama ler</em> e descobrir coisas boas</h1>
+      <p style="font-size:18px;line-height:1.65;color:#6E645F;max-width:46ch;margin:0;text-wrap:pretty">Aqui eu reúno os livros que me marcaram, os episódios do podcast, os textos que escrevo e os produtos que uso e indico de verdade.</p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:6px">
+        <a href="#livros" style="font-size:14px;letter-spacing:0.06em;padding:15px 30px;border-radius:999px;background:#2E2A28;color:#FBF8F5">Ver as leituras</a>
+        <a href="#podcast" style="font-size:14px;letter-spacing:0.06em;padding:15px 30px;border-radius:999px;border:1px solid #DCCFC6;color:#2E2A28">Ouvir o podcast</a>
+      </div>
+    </div>
+    <div style="position:relative;justify-self:center" onMouseEnter="{{ onHeroEnter }}" onMouseLeave="{{ onHeroLeave }}">
+      <div style="position:absolute;inset:-22px -22px 40px 24px;background:#EFE1DC;border-radius:220px 220px 16px 16px;transition:transform 0.7s cubic-bezier(0.22,1,0.36,1);transform:{{ heroBackdrop }}"></div>
+      <div style="position:absolute;top:-14px;left:-34px;width:72px;height:72px;border-radius:50%;border:1px solid #D7C3BB;transition:all 0.7s cubic-bezier(0.22,1,0.36,1);opacity:{{ heroDotOpacity }};transform:{{ heroDot }}"></div>
+      <div style="position:relative;transition:transform 0.7s cubic-bezier(0.22,1,0.36,1);transform:{{ heroPortrait }}">
+        <image-slot id="hero-retrato" style="width:340px;height:440px" radius="200" placeholder="Retrato ou foto lifestyle"></image-slot>
+      </div>
+    </div>
+  </section>
+
+  <section id="livros" style="padding:88px 56px;background:#F5EFE9">
+    <div style="max-width:1280px;margin:0 auto;display:flex;flex-direction:column;gap:44px">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <span style="font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:#B49B90">01 — Estante</span>
+          <h2 style="font-family:'Playfair Display',serif;font-weight:400;font-size:42px;margin:0">Livros que eu indico</h2>
+        </div>
+        <a href="#" style="font-size:14px;letter-spacing:0.06em;border-bottom:1px solid #DCCFC6;padding-bottom:4px">Ver estante completa</a>
+      </div>
+      <div style="display:grid;grid-template-columns:{{ booksGrid }};gap:34px">
+        <sc-for list="{{ books }}" as="book" hint-placeholder-count="4">
+          <article style="display:flex;flex-direction:column;gap:16px">
+            <image-slot id="capa-{{ $index }}" style="width:100%;aspect-ratio:2/3" radius="6" placeholder="Capa do livro"></image-slot>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <span style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#B49B90">{{ book.tag }}</span>
+              <h3 style="font-family:'Playfair Display',serif;font-weight:400;font-size:21px;margin:0;line-height:1.25">{{ book.title }}</h3>
+              <span style="font-size:14px;color:#8A807A">{{ book.author }}</span>
+            </div>
+            <p style="font-size:14px;line-height:1.6;color:#6E645F;margin:0">{{ book.note }}</p>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="podcast" style="padding:96px 56px">
+    <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:0.85fr 1.15fr;gap:72px;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:22px;position:sticky;top:110px">
+        <span style="font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:#B49B90">02 — Podcast</span>
+        <h2 style="font-family:'Playfair Display',serif;font-weight:400;font-size:42px;margin:0;line-height:1.15">Café com Página</h2>
+        <p style="font-size:16px;line-height:1.7;color:#6E645F;margin:0">Um episódio novo toda quinta, sobre leitura, rotina e as pequenas coisas que fazem diferença.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:4px">
+          <a href="#" style="font-size:13px;padding:11px 20px;border-radius:999px;background:#8FA8B8;color:#FFFDFB">Spotify</a>
+          <a href="#" style="font-size:13px;padding:11px 20px;border-radius:999px;border:1px solid #DCCFC6;color:#2E2A28">Apple Podcasts</a>
+          <a href="#" style="font-size:13px;padding:11px 20px;border-radius:999px;border:1px solid #DCCFC6;color:#2E2A28">YouTube</a>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column">
+        <sc-for list="{{ episodes }}" as="ep" hint-placeholder-count="4">
+          <a href="#" style="display:grid;grid-template-columns:64px 1fr auto;gap:24px;align-items:center;padding:26px 8px;border-top:1px solid #EDE4DC;color:#2E2A28" style-hover="background:#F7F1EC">
+            <span style="font-family:'Playfair Display',serif;font-size:26px;color:#C9BAB0">{{ ep.num }}</span>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <h3 style="font-family:'Playfair Display',serif;font-weight:400;font-size:20px;margin:0">{{ ep.title }}</h3>
+              <span style="font-size:14px;color:#8A807A">{{ ep.guest }}</span>
+            </div>
+            <span style="font-size:13px;color:#B49B90;letter-spacing:0.06em">{{ ep.length }}</span>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="conteudos" style="padding:88px 56px;background:#F5EFE9">
+    <div style="max-width:1280px;margin:0 auto;display:flex;flex-direction:column;gap:44px">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <span style="font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:#B49B90">03 — Conteúdos</span>
+        <h2 style="font-family:'Playfair Display',serif;font-weight:400;font-size:42px;margin:0">Textos e guias</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:32px">
+        <sc-for list="{{ posts }}" as="post" hint-placeholder-count="3">
+          <article style="display:flex;flex-direction:column;gap:18px;background:#FBF8F5;border-radius:20px;padding:18px 18px 28px">
+            <image-slot id="post-{{ $index }}" style="width:100%;height:190px" radius="14" placeholder="Imagem de capa"></image-slot>
+            <div style="display:flex;flex-direction:column;gap:10px;padding:0 8px">
+              <span style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#B49B90">{{ post.tag }}</span>
+              <h3 style="font-family:'Playfair Display',serif;font-weight:400;font-size:22px;margin:0;line-height:1.25">{{ post.title }}</h3>
+              <p style="font-size:14px;line-height:1.6;color:#6E645F;margin:0">{{ post.excerpt }}</p>
+              <a href="#" style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;margin-top:6px">Ler mais</a>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="indicacoes" style="padding:96px 56px">
+    <div style="max-width:1280px;margin:0 auto;display:flex;flex-direction:column;gap:44px">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <span style="font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:#B49B90">04 — Indicações</span>
+          <h2 style="font-family:'Playfair Display',serif;font-weight:400;font-size:42px;margin:0">Produtos que eu uso</h2>
+        </div>
+        <p style="font-size:14px;color:#8A807A;max-width:34ch;margin:0">Alguns links são de afiliados. Só indico o que faz parte da minha rotina.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:28px">
+        <sc-for list="{{ products }}" as="item" hint-placeholder-count="4">
+          <article style="display:flex;flex-direction:column;gap:16px;padding:20px;border:1px solid #EDE4DC;border-radius:20px;background:#FFFDFB" style-hover="border-color:#E2A9A0">
+            <image-slot id="produto-{{ $index }}" style="width:100%;height:170px" radius="12" placeholder="Foto do produto"></image-slot>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <h3 style="font-size:16px;font-weight:600;margin:0">{{ item.name }}</h3>
+              <span style="font-size:13px;color:#8A807A">{{ item.category }}</span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-top:auto">
+              <sc-if value="{{ showPrices }}" hint-placeholder-val="{{ true }}">
+                <span style="font-family:'Playfair Display',serif;font-size:18px">{{ item.price }}</span>
+              </sc-if>
+              <a href="#" style="font-size:12px;letter-spacing:0.08em;text-transform:uppercase;padding:9px 16px;border-radius:999px;background:#F0E3DE;color:#2E2A28">Comprar</a>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="instagram" style="padding:88px 56px;background:#F5EFE9">
+    <div style="max-width:1280px;margin:0 auto;display:flex;flex-direction:column;gap:40px">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <span style="font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:#B49B90">05 — Instagram</span>
+          <h2 style="font-family:'Playfair Display',serif;font-weight:400;font-size:42px;margin:0">@giovanna.cabral</h2>
+        </div>
+        <a href="#" style="font-size:14px;letter-spacing:0.06em;padding:13px 26px;border-radius:999px;border:1px solid #DCCFC6;color:#2E2A28">Seguir</a>
+      </div>
+      <div style="display:grid;grid-template-columns:{{ igGrid }};gap:16px">
+        <sc-for list="{{ igPosts }}" as="post" hint-placeholder-count="6">
+          <figure style="margin:0;position:relative;aspect-ratio:1;border-radius:14px;overflow:hidden;background:#EFE7E1">
+            <image-slot id="ig-{{ $index }}" shape="rect" placeholder="Post do Instagram"></image-slot>
+            <figcaption style="position:absolute;left:0;right:0;bottom:0;padding:34px 14px 12px;font-size:12px;color:#FFFDFB;background:linear-gradient(to top,rgba(46,42,40,0.55),transparent);pointer-events:none">{{ post.caption }}</figcaption>
+          </figure>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <sc-if value="{{ showNewsletter }}" hint-placeholder-val="{{ true }}">
+    <section id="newsletter" style="padding:104px 56px">
+      <div style="max-width:720px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center">
+        <span style="font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:#B49B90">Carta semanal</span>
+        <h2 style="font-family:'Playfair Display',serif;font-weight:400;font-size:40px;margin:0;line-height:1.2">Uma carta por semana, com calma</h2>
+        <p style="font-size:16px;line-height:1.7;color:#6E645F;margin:0;max-width:48ch">Leituras da semana, um trecho que anotei e as indicações que não couberam no feed.</p>
+        <form style="display:flex;gap:10px;width:100%;max-width:460px;margin-top:12px" onSubmit="{{ onSubmit }}">
+          <input type="email" placeholder="seu melhor e-mail" style="flex:1;padding:15px 20px;border-radius:999px;border:1px solid #DCCFC6;background:#FFFDFB;font-family:Karla,sans-serif;font-size:15px;color:#2E2A28;outline:none" />
+          <button type="submit" style="padding:15px 28px;border-radius:999px;border:none;background:#E2A9A0;color:#FFFDFB;font-family:Karla,sans-serif;font-size:14px;letter-spacing:0.06em;cursor:pointer">Assinar</button>
+        </form>
+        <span style="font-size:13px;color:#B49B90;min-height:18px">{{ formMessage }}</span>
+      </div>
+    </section>
+  </sc-if>
+
+  <footer style="padding:44px 56px;border-top:1px solid #EDE4DC;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
+    <span style="font-family:'Playfair Display',serif;font-size:18px">Giovanna Cabral</span>
+    <div style="display:flex;gap:26px;font-size:14px;color:#8A807A">
+      <a href="#" style="color:#8A807A">Instagram</a>
+      <a href="#" style="color:#8A807A">Spotify</a>
+      <a href="#" style="color:#8A807A">Contato</a>
+    </div>
+    <span style="font-size:13px;color:#B49B90">© 2026 — feito com carinho</span>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;instagramColumns&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:6,&quot;min&quot;:3,&quot;max&quot;:6,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;booksPerRow&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:4,&quot;min&quot;:2,&quot;max&quot;:5,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;showPrices&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Conteúdo&quot;},&quot;showNewsletter&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Conteúdo&quot;}}">
+class Component extends DCLogic {
+  state = { formMessage: "", heroHover: false };
+  renderVals() {
+    const cols = this.props.instagramColumns ?? 4;
+    const booksPerRow = this.props.booksPerRow ?? 4;
+    return {
+      igGrid: `repeat(auto-fit, minmax(min(100%, ${Math.floor(1220 / cols)}px), 1fr))`,
+      booksGrid: `repeat(auto-fit, minmax(min(100%, ${Math.floor(1220 / booksPerRow)}px), 1fr))`,
+      showPrices: this.props.showPrices ?? true,
+      showNewsletter: this.props.showNewsletter ?? true,
+      formMessage: this.state.formMessage,
+      onHeroEnter: () => this.setState({ heroHover: true }),
+      onHeroLeave: () => this.setState({ heroHover: false }),
+      heroPortrait: this.state.heroHover ? "translateY(-14px) scale(1.02)" : "translateY(0) scale(1)",
+      heroBackdrop: this.state.heroHover ? "translate(14px, 10px) rotate(-2.5deg)" : "translate(0,0) rotate(0deg)",
+      heroDot: this.state.heroHover ? "translate(-10px, -8px) scale(1.15)" : "translate(0,0) scale(1)",
+      heroDotOpacity: this.state.heroHover ? 1 : 0.35,
+      onSubmit: (e) => { e.preventDefault(); this.setState({ formMessage: "Prontinho, você está na lista." }); },
+      books: [
+        { tag: "Ficção", title: "O verão sem pressa", author: "Clara Nunes", note: "Li em três dias e chorei no último capítulo." },
+        { tag: "Ensaio", title: "Cartas para uma leitora", author: "Helena Braga", note: "Perfeito para ler devagar, um capítulo por noite." },
+        { tag: "Não-ficção", title: "A rotina possível", author: "Bruna Teixeira", note: "Mudou a forma como eu organizo as manhãs." },
+        { tag: "Poesia", title: "Pequenos dias claros", author: "Ana Ferraz", note: "Deixo na mesa de cabeceira o ano inteiro." }
+      ],
+      episodes: [
+        { num: "42", title: "Como voltar a ler depois de uma pausa longa", guest: "com Helena Braga", length: "38 min" },
+        { num: "41", title: "Montando uma estante que faz sentido", guest: "episódio solo", length: "24 min" },
+        { num: "40", title: "Livros que a gente abandona (e tudo bem)", guest: "com Clara Nunes", length: "45 min" },
+        { num: "39", title: "Rotina de manhã sem culpa", guest: "com Bruna Teixeira", length: "31 min" }
+      ],
+      posts: [
+        { tag: "Guia", title: "Por onde começar na leitura em 2026", excerpt: "Cinco títulos leves para retomar o hábito sem peso." },
+        { tag: "Bastidores", title: "Como eu escolho o que vou ler", excerpt: "Meu método simples de fila de leitura e listas." },
+        { tag: "Rotina", title: "Meu cantinho de leitura", excerpt: "Luz, cadeira e as coisas que realmente uso." }
+      ],
+      products: [
+        { name: "Marcador de páginas", category: "Papelaria", price: "R$ 29" },
+        { name: "Luminária de leitura", category: "Casa", price: "R$ 149" },
+        { name: "Caderno de anotações", category: "Papelaria", price: "R$ 68" },
+        { name: "Chá de camomila", category: "Rotina", price: "R$ 42" }
+      ],
+      igPosts: [
+        { caption: "leituras de agosto" },
+        { caption: "manhã de domingo" },
+        { caption: "chegou na estante" },
+        { caption: "trechos que anotei" },
+        { caption: "bastidores do podcast" },
+        { caption: "meu cantinho" }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
