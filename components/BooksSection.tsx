@@ -19,7 +19,7 @@ export default function BooksSection() {
           </a>
         </div>
 
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,305px),1fr))] gap-8.5">
+        <div className="grid grid-cols-2 gap-6 min-[640px]:grid-cols-3 min-[900px]:grid-cols-4 min-[900px]:gap-8">
           {books.map((book) => (
             <article key={book.title} className="flex flex-col gap-4">
               <div className="relative aspect-2/3 w-full overflow-hidden rounded-[6px] bg-hero-shape">
@@ -27,7 +27,7 @@ export default function BooksSection() {
                   src={book.cover}
                   alt={`Capa de ${book.title}`}
                   fill
-                  sizes="(min-width: 900px) 305px, 100vw"
+                  sizes="(min-width: 900px) 25vw, 50vw"
                   className="object-cover"
                 />
               </div>
