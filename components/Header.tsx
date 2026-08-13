@@ -23,12 +23,6 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-4">
-          <a
-            href="#newsletter"
-            className="hidden rounded-full bg-peach px-[22px] py-[11px] text-[13px] tracking-[0.08em] text-surface uppercase hover:text-surface min-[900px]:inline-block"
-          >
-            Newsletter
-          </a>
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
@@ -53,13 +47,6 @@ export default function Header() {
               {link.label}
             </a>
           ))}
-          <a
-            href="#newsletter"
-            onClick={() => setOpen(false)}
-            className="w-fit rounded-full bg-peach px-[22px] py-[11px] text-[13px] tracking-[0.08em] text-surface uppercase hover:text-surface"
-          >
-            Newsletter
-          </a>
         </nav>
       )}
     </header>

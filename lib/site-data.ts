@@ -45,37 +45,53 @@ export const books: Book[] = [
   },
 ];
 
-export type Episode = {
-  num: string;
+export type RecommendationType = "podcast" | "video";
+
+export type Recommendation = {
+  type: RecommendationType;
   title: string;
-  guest: string;
-  length: string;
+  /** Nome de quem produz o conteúdo (não é a Giovanna). */
+  creator: string;
+  /** Link externo para o conteúdo indicado. */
+  link: string;
 };
 
-export const episodes: Episode[] = [
+export const recommendations: Recommendation[] = [
   {
-    num: "42",
+    type: "podcast",
     title: "Como voltar a ler depois de uma pausa longa",
-    guest: "com Helena Braga",
-    length: "38 min",
+    creator: "Pod das Letras",
+    link: "#",
   },
   {
-    num: "41",
+    type: "podcast",
     title: "Montando uma estante que faz sentido",
-    guest: "episódio solo",
-    length: "24 min",
+    creator: "Estante em Ordem",
+    link: "#",
   },
   {
-    num: "40",
+    type: "podcast",
     title: "Livros que a gente abandona (e tudo bem)",
-    guest: "com Clara Nunes",
-    length: "45 min",
+    creator: "Café Literário",
+    link: "#",
   },
   {
-    num: "39",
-    title: "Rotina de manhã sem culpa",
-    guest: "com Bruna Teixeira",
-    length: "31 min",
+    type: "video",
+    title: "Resenha: 5 livros que mudaram minha rotina",
+    creator: "Canal da Marina Lopes",
+    link: "#",
+  },
+  {
+    type: "video",
+    title: "Como organizar uma estante pequena",
+    creator: "Vida em Capítulos",
+    link: "#",
+  },
+  {
+    type: "video",
+    title: "Rotina de leitura de quem lê 50 livros por ano",
+    creator: "Ler Todo Dia",
+    link: "#",
   },
 ];
 
@@ -107,24 +123,75 @@ export type Product = {
   name: string;
   category: string;
   price: string;
+  /** Link de afiliado (ex.: Amazon Associates, com ?tag=seu-id-20). */
+  link: string;
 };
 
 export const products: Product[] = [
-  { name: "Marcador de páginas", category: "Papelaria", price: "R$ 29" },
-  { name: "Luminária de leitura", category: "Casa", price: "R$ 149" },
-  { name: "Caderno de anotações", category: "Papelaria", price: "R$ 68" },
-  { name: "Chá de camomila", category: "Rotina", price: "R$ 42" },
+  {
+    name: "Marcador de páginas",
+    category: "Papelaria",
+    price: "R$ 29",
+    link: "#",
+  },
+  {
+    name: "Luminária de leitura",
+    category: "Casa",
+    price: "R$ 149",
+    link: "#",
+  },
+  {
+    name: "Caderno de anotações",
+    category: "Papelaria",
+    price: "R$ 68",
+    link: "#",
+  },
+  {
+    name: "Chá de camomila",
+    category: "Rotina",
+    price: "R$ 42",
+    link: "#",
+  },
+  {
+    name: "Almofada de leitura",
+    category: "Casa",
+    price: "R$ 119",
+    link: "#",
+  },
+  {
+    name: "Suporte para livro",
+    category: "Papelaria",
+    price: "R$ 54",
+    link: "#",
+  },
+  {
+    name: "Vela aromática",
+    category: "Rotina",
+    price: "R$ 79",
+    link: "#",
+  },
+  {
+    name: "Capa para e-reader",
+    category: "Papelaria",
+    price: "R$ 89",
+    link: "#",
+  },
 ];
+
+/** Link do perfil da Giovanna no Instagram (usado no botão "Seguir"). */
+export const instagramProfileUrl = "https://www.instagram.com/giocavallin?igsh=ZWg2MGlzd3R4Z3pv";
 
 export type InstagramPost = {
   caption: string;
+  /** Link do post específico no Instagram (ex.: https://www.instagram.com/p/POST_ID/). */
+  link: string;
 };
 
+
 export const instagramPosts: InstagramPost[] = [
-  { caption: "leituras de agosto" },
-  { caption: "manhã de domingo" },
-  { caption: "chegou na estante" },
-  { caption: "trechos que anotei" },
-  { caption: "bastidores do podcast" },
-  { caption: "meu cantinho" },
+  { caption: "A busca pelo melhor investimento", link: "https://www.instagram.com/reel/Db9ZbZYRxH1/?igsh=MXA5MGhkZjNrNWJ5eQ==" },
+  { caption: "Talvez o problema não seja o quando você ganha", link: "https://www.instagram.com/reel/Db4lpKyJPEX/?igsh=MTc0cnk4NzdubThvNA==" },
+  { caption: "li o livro \"A psicologia financeira\" de Morgan Housel e uma coisa ficou muito clara", link: "https://www.instagram.com/p/DVjvS1IAQ1R/?igsh=ODZ3aG00ZG16ZG52" },
+  { caption: "Se você sente que seu dinheiro esta desorganizado, comece com algo simples.", link: "https://www.instagram.com/reel/DXFg6gVB-Wh/?igsh=OWM3aWFiemJmdWx2" },
+  { caption: "O governo lançou um novo investimento e em um único dia captou R$86 milhões.", link: "https://www.instagram.com/p/DYkP6yIkXzj/?igsh=NTc0MXllOXU3a2w1" },
 ];

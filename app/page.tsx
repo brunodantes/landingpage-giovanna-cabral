@@ -5,7 +5,6 @@ import PodcastSection from "@/components/PodcastSection";
 import ContentSection from "@/components/ContentSection";
 import ProductsSection from "@/components/ProductsSection";
 import InstagramSection from "@/components/InstagramSection";
-import NewsletterSection from "@/components/NewsletterSection";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -19,7 +18,6 @@ export default function Home() {
         <ContentSection />
         <ProductsSection />
         <InstagramSection />
-        <NewsletterSection />
       </main>
       <Footer />
     </>

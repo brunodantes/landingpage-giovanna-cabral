@@ -18,20 +18,6 @@ export default function Hero() {
             Aqui eu reúno os livros que me marcaram, os episódios do podcast,
             os textos que escrevo e os produtos que uso e indico de verdade.
           </p>
-          <div className="mt-1.5 flex flex-wrap gap-3.5">
-            <a
-              href="#livros"
-              className="rounded-full bg-ink px-[30px] py-[15px] text-sm tracking-[0.06em] text-paper"
-            >
-              Ver as leituras
-            </a>
-            <a
-              href="#podcast"
-              className="rounded-full border border-border-defined px-[30px] py-[15px] text-sm tracking-[0.06em] text-ink"
-            >
-              Ouvir o podcast
-            </a>
-          </div>
         </div>
 
         <div className="group relative w-fit justify-self-center">
